@@ -27,6 +27,7 @@ obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
 obiektKarta = Karta(["przykksiążka2"])
 
 window = Tk()
+window.title("Biblioteka")
 window.geometry("500x200")
 
 def guzikWypozyczWcisniety():
@@ -36,12 +37,17 @@ guzikWypozycz.place(x=75, y=50)
 
 def guzikWyswietlWypozyczone():
     obiektKarta.wyswietlWypozyczone()
-guzikWyswietl = Button(window, text="Wyświetl Ksiązki Wypozyczone", command=guzikWyswietlWypozyczone)
-guzikWyswietl.place(x=75, y=75)
+guzikWyswietlK = Button(window, text="Wyświetl Ksiązki Wypozyczone", command=guzikWyswietlWypozyczone)
+guzikWyswietlK.place(x=75, y=75)
 
 def guzikUsunKsiazki():
     obiektKarta.usunKsiazki()
 guzikWypozycz = Button(window, text="Usuń Książkę z Karty", command=guzikWypozyczWcisniety)
 guzikWypozycz.place(x=75, y=100)
+
+def guzikWyswietlBiblioteke():
+    obiektKsiazki.wyswietlKsiazki()
+guzikWyswietlB = Button(window, text="Wyświetl Książki z Biblioteki", command=guzikWyswietlBiblioteke)
+guzikWyswietlB.place(x=75, y=125)
 
 window.mainloop()
