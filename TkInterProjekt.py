@@ -4,6 +4,10 @@ from tkinter import messagebox
 class Ksiazki:
     def __init__(self, ksiazki):
         self.ksiazki = ksiazki
+    def wyswietlKsiazki(self):
+        print("Ksiązki w bibliotece: ")
+        for j in self.ksiazki:
+            print(j)
 
 class Karta:
     def __init__(self, ksiazkiWypozyczone):
