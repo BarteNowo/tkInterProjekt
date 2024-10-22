@@ -11,8 +11,9 @@ class Karta:
     def wypozyczKsiazke(self, tytul1):
         if tytul1 in Ksiazki.ksiazki:
             Ksiazki.ksiazki.remove(tytul1)
-            self.ksiazkiWypozyczone.remove(tytul1)
+            self.ksiazkiWypozyczone.append(tytul1)
     def wyswietlWypozyczone(self):
+        print("Książki wypożyczone:")
         for i in self.ksiazkiWypozyczone:
             print(i)
     def usunKsiazki(self, tytul2):
@@ -22,12 +23,24 @@ obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
 obiektKarta = Karta(["przykksiążka2"])
 
 window = Tk()
-window.geometry("200x100")
+window.geometry("500x200")
 
 def guzikWypozyczWcisniety():
     obiektKarta.wypozyczKsiazke()
 
-guzikWypozycz = Button(window, text="cos", command=guzikWypozyczWcisniety)
+def guzikWyswietlWypozyczone():
+    obiektKarta.wyswietlWypozyczone()
+
+def guzikUsunKsiazki():
+    obiektKarta.usunKsiazki()
+
+guzikWypozycz = Button(window, text="Wypozycz Książkę", command=guzikWypozyczWcisniety)
 guzikWypozycz.place(x=75, y=50)
+
+guzikWyswietl = Button(window, text="Wyświetl Ksiązki Wypozyczone", command=guzikWyswietlWypozyczone)
+guzikWyswietl.place(x=75, y=75)
+
+guzikUsun = Button(window, text="Usuń Książki z Karty", command=guzikUsunKsiazki)
+guzikUsun.place(x=75, y=100)
 
 window.mainloop()

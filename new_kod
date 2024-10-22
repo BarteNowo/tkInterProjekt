@@ -16,7 +16,7 @@ class Karta:
         for j in Ksiazki.ksiazki:
             print(j)
         print("Książki wypożyczone:")
-        for i in ksiazkiWypozyczone:
+        for i in self.ksiazkiWypozyczone:
             print(i)
     def usunKsiazki(self, tytul2):
         Ksiazki.ksiazki.remove(tytul2)
