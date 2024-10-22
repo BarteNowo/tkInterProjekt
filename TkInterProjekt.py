@@ -24,10 +24,10 @@ obiektKarta = Karta(["przykksiążka2"])
 window = Tk()
 window.geometry("200x100")
 
-def guzikWcisniety():
-    print("cos")
+def guzikWypozyczWcisniety():
+    obiektKarta.wypozyczKsiazke()
 
-guzik = Button(window, text="cos", command=guzikWcisniety)
-guzik.place(x=75, y=50)
+guzikWypozycz = Button(window, text="cos", command=guzikWypozyczWcisniety)
+guzikWypozycz.place(x=75, y=50)
 
 window.mainloop()
