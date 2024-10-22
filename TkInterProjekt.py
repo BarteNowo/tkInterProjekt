@@ -27,20 +27,17 @@ window.geometry("500x200")
 
 def guzikWypozyczWcisniety():
     obiektKarta.wypozyczKsiazke()
-
-def guzikWyswietlWypozyczone():
-    obiektKarta.wyswietlWypozyczone()
-
-def guzikUsunKsiazki():
-    obiektKarta.usunKsiazki()
-
 guzikWypozycz = Button(window, text="Wypozycz Książkę", command=guzikWypozyczWcisniety)
 guzikWypozycz.place(x=75, y=50)
 
+def guzikWyswietlWypozyczone():
+    obiektKarta.wyswietlWypozyczone()
 guzikWyswietl = Button(window, text="Wyświetl Ksiązki Wypozyczone", command=guzikWyswietlWypozyczone)
 guzikWyswietl.place(x=75, y=75)
 
-guzikUsun = Button(window, text="Usuń Książki z Karty", command=guzikUsunKsiazki)
-guzikUsun.place(x=75, y=100)
+def guzikUsunKsiazki():
+    obiektKarta.usunKsiazki()
+guzikWypozycz = Button(window, text="Usuń Książkę z Karty", command=guzikWypozyczWcisniety)
+guzikWypozycz.place(x=75, y=100)
 
 window.mainloop()

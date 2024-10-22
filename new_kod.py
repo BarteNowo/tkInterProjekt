@@ -17,12 +17,12 @@ class Karta:
             self.ksiazkiWypozyczone.append(tytul1)
     def wyswietlWypozyczone(self):
         print("Książki wypożyczone:")
-        for i in ksiazkiWypozyczone:
+        for i in self.ksiazkiWypozyczone:
             print(i)
     def usunKsiazki(self, tytul2):
         Ksiazki.ksiazki.remove(tytul2)
-    def edytujKsiazki(self, stary_tytul, nowy_tytul)
-        if start_tytul in self.ksiazkiWypozyczone:
+    def edytujKsiazki(self, stary_tytul, nowy_tytul):
+        if stary_tytul in self.ksiazkiWypozyczone:
             self.ksiazkiWypozyczone(self.ksiazkiWypozyczone.index(stary_tytul)) = nowy_tytul
 
 
