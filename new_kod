@@ -1,0 +1,21 @@
+import tkinter as tk
+
+class Ksiazki:
+    def __init__(self, ksiazki):
+        self.ksiazki = ksiazki
+
+class Karta:
+    def __init__(self, ksiazkiWypozyczone):
+        self.ksiazkiWypozyczone = ksiazkiWypozyczone
+    def wypozyczKsiazke(self, tytul1):
+        if tytul1 in Ksiazki.ksiazki:
+            Ksiazki.ksiazki.remove(tytul1)
+            self.ksiazkiWypozyczone.remove(tytul1)
+    def wyswietlWypozyczone(self):
+        for i in ksiazkiWypozyczone:
+            print(i)
+    def usunKsiazki(self, tytul2):
+        Ksiazki.ksiazki.remove(tytul2)
+
+obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
+obiektKarta = Karta(["przykksiążka2"])
