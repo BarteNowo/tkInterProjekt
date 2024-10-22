@@ -37,8 +37,21 @@ class Karta:
 
         windowWyswietlWypozyczone.mainloop()
 
-    def usunKsiazki(self, tytul2):
+    def usunKsiazki(self):
+        windowUsun = Tk()
+        windowUsun.title("Usuń ksiązkę")
+        windowUsun.geometry("500x200")
+
+        textUsun = Text(windowUsun, height=5, width=52)
+        textUsun.pack()
+        tytul2 = textUsun.get(1.0, "end-1c")
+
+
+
         Ksiazki.ksiazki.remove(tytul2)
+
+    def edytujKsiazki(self, stary_tytul, nowy_tytul):
+        self.ksiazkiWypozyczone[self.ksiazkiWypozyczone.index(stary_tytul)] = nowy_tytul
 
 obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
 obiektKarta = Karta(["przykksiążka2"])
@@ -59,12 +72,17 @@ guzikWyswietlK.place(x=75, y=75)
 
 def guzikUsunKsiazki():
     obiektKarta.usunKsiazki()
-guzikWypozycz = Button(window, text="Usuń Książkę z Karty", command=guzikWypozyczWcisniety)
+guzikWypozycz = Button(window, text="Usuń Książkę z Karty", command=guzikUsunKsiazki)
 guzikWypozycz.place(x=75, y=100)
 
 def guzikWyswietlBiblioteke():
     obiektKsiazki.wyswietlKsiazki()
 guzikWyswietlB = Button(window, text="Wyświetl Książki z Biblioteki", command=guzikWyswietlBiblioteke)
 guzikWyswietlB.place(x=75, y=125)
+
+def guzikEdytujKsiazki():
+    obiektKarta.edytujKsiazki()
+guzikEdytuj = Button(window, text="Edytuj Książki", command=guzikEdytujKsiazki)
+guzikEdytuj.place(x=75, y=150)
 
 window.mainloop()
