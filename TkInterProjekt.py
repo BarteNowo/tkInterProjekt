@@ -1,4 +1,5 @@
-import tkinter as tk
+from tkinter import *
+from tkinter import messagebox
 
 class Ksiazki:
     def __init__(self, ksiazki):
@@ -7,24 +8,26 @@ class Ksiazki:
 class Karta:
     def __init__(self, ksiazkiWypozyczone):
         self.ksiazkiWypozyczone = ksiazkiWypozyczone
-    def wypozyczKsiazke(self, numer1):
-        self.ksiazkiWypozyczone.append(Ksiazki.ksiazki[numer1])
-        Ksiazki.ksiazki.remove(numer1)
+    def wypozyczKsiazke(self, tytul1):
+        if tytul1 in Ksiazki.ksiazki:
+            Ksiazki.ksiazki.remove(tytul1)
+            self.ksiazkiWypozyczone.remove(tytul1)
     def wyswietlWypozyczone(self):
-        print(self.ksiazkiWypozyczone)
-    def usunKsiazki(self, numer2):
-        Ksiazki.ksiazki.remove(numer2)
+        for i in self.ksiazkiWypozyczone:
+            print(i)
+    def usunKsiazki(self, tytul2):
+        Ksiazki.ksiazki.remove(tytul2)
 
-obiektKsiazki = Ksiazki({1 : "Życie w Nigerii",2 : "Tak"})
-obiektKarta = Karta(["I'm black"])
+obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
+obiektKarta = Karta(["przykksiążka2"])
 
-window = tk.Tk()
-
-greetings = tk.Label(text="Księgarnia")
-greetings.pack()
+window = Tk()
+window.geometry("200x100")
 
 def guzikWcisniety():
     print("cos")
-guzik = tk.Button(window, text="cos", command=guzikWcisniety)
+
+guzik = Button(window, text="cos", command=guzikWcisniety)
+guzik.place(x=75, y=50)
 
 window.mainloop()
