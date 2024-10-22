@@ -1,14 +1,20 @@
 from tkinter import *
-from tkinter import tkk
 import tkinter as tk
 
 class Ksiazki:
     def __init__(self, ksiazki):
         self.ksiazki = ksiazki
     def wyswietlKsiazki(self):
-        print("Ksiązki w bibliotece: ")
-        for j in self.ksiazki:
-            print(j)
+        windowWyswietlBiblioteke = Tk()
+        windowWyswietlBiblioteke.title("Książki w bibliotece")
+        windowWyswietlBiblioteke.geometry("500x200")
+
+        textWyswietlBiblioteke = Text(windowWyswietlBiblioteke, height=5, width=52)
+        textWyswietlBiblioteke.pack()
+        textWyswietlBiblioteke.insert(tk.END, "\n".join(self.ksiazki))
+        textWyswietlBiblioteke.config(state=tk.DISABLED)
+
+        windowWyswietlBiblioteke.mainloop()
 
 class Karta:
     def __init__(self, ksiazkiWypozyczone):
@@ -22,11 +28,11 @@ class Karta:
     def wyswietlWypozyczone(self):
         windowWyswietlWypozyczone = Tk()
         windowWyswietlWypozyczone.title("Książki wypożyczone")
-        window.geometry("500x200")
+        windowWyswietlWypozyczone.geometry("500x200")
 
-        textWyswietlWypozyczone = Text(windowWyswietlWypozyczone, height = 5, width = 52)
+        textWyswietlWypozyczone = Text(windowWyswietlWypozyczone, height=5, width=52)
         textWyswietlWypozyczone.pack()
-        textWyswietlWypozyczone.insert(tk.END, '   '.join(self.ksiazkiWypozyczone))
+        textWyswietlWypozyczone.insert(tk.END, "\n".join(self.ksiazkiWypozyczone))
         textWyswietlWypozyczone.config(state=tk.DISABLED)
 
         windowWyswietlWypozyczone.mainloop()
