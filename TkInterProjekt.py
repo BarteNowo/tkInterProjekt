@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import tkk
+import tkinter as tk
 
 class Ksiazki:
     def __init__(self, ksiazki):
@@ -12,14 +13,24 @@ class Ksiazki:
 class Karta:
     def __init__(self, ksiazkiWypozyczone):
         self.ksiazkiWypozyczone = ksiazkiWypozyczone
+
     def wypozyczKsiazke(self, tytul1):
         if tytul1 in Ksiazki.ksiazki:
             Ksiazki.ksiazki.remove(tytul1)
             self.ksiazkiWypozyczone.append(tytul1)
+
     def wyswietlWypozyczone(self):
-        print("Książki wypożyczone:")
-        for i in self.ksiazkiWypozyczone:
-            print(i)
+        windowWyswietlWypozyczone = Tk()
+        windowWyswietlWypozyczone.title("Książki wypożyczone")
+        window.geometry("500x200")
+
+        textWyswietlWypozyczone = Text(windowWyswietlWypozyczone, height = 5, width = 52)
+        textWyswietlWypozyczone.pack()
+        textWyswietlWypozyczone.insert(tk.END, '   '.join(self.ksiazkiWypozyczone))
+        textWyswietlWypozyczone.config(state=tk.DISABLED)
+
+        windowWyswietlWypozyczone.mainloop()
+
     def usunKsiazki(self, tytul2):
         Ksiazki.ksiazki.remove(tytul2)
 
