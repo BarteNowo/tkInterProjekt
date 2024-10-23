@@ -35,6 +35,7 @@ class Karta:
                 obiektKsiazki.ksiazki.remove(string)
             else:
                 sys.exit(0)
+                
         windowWypozycz = Tk()
         windowWypozycz.title("Wypożycz książkę")
         windowWypozycz.geometry("500x200")
@@ -65,6 +66,7 @@ class Karta:
                 self.ksiazkiWypozyczone.remove(string)
             else:
                 sys.exit(0)
+
         windowUsun = Tk()
         windowUsun.title("Usuń ksiązkę")
         windowUsun.geometry("500x200")
@@ -75,10 +77,28 @@ class Karta:
         guzikUsunKsiazke = ttk.Button(windowUsun, text="Usuń tytuł", command=inputTextUsunKsiazke)
         guzikUsunKsiazke.pack()
 
-    def edytujKsiazki(self):
-        windowEdytuj = Tk()
-        windowEdytuj.title("Zmień tytuł książki")
-        windowEdytuj.geometry("500x200")
+    def zmienTytulKsiazki(self):
+        global textStaryTytul, textNowyTytul
+        def inputTextZmienTytulKsiazki():
+            stringStaryTytul = textStaryTytul.get()
+            stringNowyTytul = textNowyTytul.get()
+            if stringStaryTytul in self.ksiazkiWypozyczone:
+                self.ksiazkiWypozyczone[self.ksiazkiWypozyczone.index(stringStaryTytul)] = stringNowyTytul
+            else:
+                sys.exit(0)
+                
+        windowZmienTytul = Tk()
+        windowZmienTytul.title("Zmień tytuł książki")
+        windowZmienTytul.geometry("500x200")
+        textStaryTytul = ttk.Entry(windowZmienTytul)
+        textStaryTytul.pack()
+        textStaryTytul.focus_set()
+        textNowyTytul = ttk.Entry(windowZmienTytul)
+        textNowyTytul.pack()
+        textNowyTytul.focus_set()
+
+        guzikInputTextZmienTytul = ttk.Button(windowZmienTytul, text="Zmień tytuł", command=inputTextZmienTytulKsiazki)
+        guzikInputTextZmienTytul.pack()
 
 obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
 obiektKarta = Karta(["przykksiążka2"])
@@ -107,9 +127,9 @@ def guzikWyswietlBiblioteke():
 guzikWyswietlB = Button(window, text="Wyświetl Książki z Biblioteki", command=guzikWyswietlBiblioteke)
 guzikWyswietlB.place(x=75, y=125)
 
-def guzikEdytujKsiazki():
-    obiektKarta.edytujKsiazki()
-guzikEdytuj = Button(window, text="Edytuj Książki", command=guzikEdytujKsiazki)
+def guzikZmienTytulKsiazki():
+    obiektKarta.zmienTytulKsiazki()
+guzikEdytuj = Button(window, text="Edytuj Książki", command=guzikZmienTytulKsiazki)
 guzikEdytuj.place(x=75, y=150)
 
 window.mainloop()
