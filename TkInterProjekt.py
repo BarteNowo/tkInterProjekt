@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter as tk
+from tkinter import ttk
 
 class Ksiazki:
     def __init__(self, ksiazki):
@@ -42,13 +43,14 @@ class Karta:
         windowUsun.title("Usuń ksiązkę")
         windowUsun.geometry("500x200")
 
-        textUsun = Text(windowUsun, height=5, width=52)
-        textUsun.pack()
-        tytul2 = textUsun.get(1.0, "end-1c")
-
-
-
-        Ksiazki.ksiazki.remove(tytul2)
+        textUsun = tk.StringVar()
+        entry = ttk.Entry(windowUsun, textvariable=textUsun)
+        entry.pack(pady=10)
+        def inputText():
+            print("Entered text: ", textUsun.get())
+        guzikInput = ttk.Button(windowUsun, text="Get Text", command=inputText)
+        guzikInput.pack(pady=10)
+        windowUsun.mainloop()
 
     def edytujKsiazki(self, stary_tytul, nowy_tytul):
         self.ksiazkiWypozyczone[self.ksiazkiWypozyczone.index(stary_tytul)] = nowy_tytul
