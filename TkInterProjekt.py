@@ -26,10 +26,24 @@ class Karta:
     def __init__(self, ksiazkiWypozyczone):
         self.ksiazkiWypozyczone = ksiazkiWypozyczone
 
-    def wypozyczKsiazke(self, tytul1):
-        if tytul1 in Ksiazki.ksiazki:
-            obiektKsiazki.ksiazki.remove(tytul1)
-            self.ksiazkiWypozyczone.append(tytul1)
+    def wypozyczKsiazke(self):
+        global textWypozyczanie
+        def inputTextWypozyczKsiazke():
+            string = textWypozyczanie.get()
+            if string in obiektKsiazki.ksiazki:
+                self.ksiazkiWypozyczone.append(string)
+                obiektKsiazki.ksiazki.remove(string)
+            else:
+                sys.exit(0)
+        windowWypozycz = Tk()
+        windowWypozycz.title("Wypożycz książkę")
+        windowWypozycz.geometry("500x200")
+        textWypozyczanie = ttk.Entry(windowWypozycz)
+        textWypozyczanie.pack()
+        textWypozyczanie.focus_set()
+
+        guzikWypozyczKsiazke = ttk.Button(windowWypozycz, text="Wypozycz tytuł", command=inputTextWypozyczKsiazke)
+        guzikWypozyczKsiazke.pack()
 
     def wyswietlWypozyczone(self):
         windowWyswietlWypozyczone = Tk()
@@ -61,8 +75,10 @@ class Karta:
         guzikUsunKsiazke = ttk.Button(windowUsun, text="Usuń tytuł", command=inputTextUsunKsiazke)
         guzikUsunKsiazke.pack()
 
-    def edytujKsiazki(self, stary_tytul, nowy_tytul):
-        self.ksiazkiWypozyczone[self.ksiazkiWypozyczone.index(stary_tytul)] = nowy_tytul
+    def edytujKsiazki(self):
+        windowEdytuj = Tk()
+        windowEdytuj.title("Zmień tytuł książki")
+        windowEdytuj.geometry("500x200")
 
 obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
 obiektKarta = Karta(["przykksiążka2"])
