@@ -6,7 +6,6 @@ import sys
 obiektKsiazki = 0
 obiektKarta = 0
 
-
 class Ksiazki:
     def __init__(self, ksiazki):
         self.ksiazki = ksiazki
@@ -100,8 +99,8 @@ class Karta:
         guzikInputTextZmienTytul = ttk.Button(windowZmienTytul, text="Zmień tytuł", command=inputTextZmienTytulKsiazki)
         guzikInputTextZmienTytul.pack()
 
-obiektKsiazki = Ksiazki(["przykksiążka", "Tak"])
-obiektKarta = Karta(["przykksiążka2"])
+obiektKsiazki = Ksiazki(["Nie", "Tak"])
+obiektKarta = Karta(["NieTak"])
 
 window = Tk()
 window.title("Biblioteka")
