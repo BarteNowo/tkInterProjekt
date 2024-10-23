@@ -1,6 +1,11 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
+import sys
+
+obiektKsiazki = 0
+obiektKarta = 0
+
 
 class Ksiazki:
     def __init__(self, ksiazki):
@@ -23,7 +28,7 @@ class Karta:
 
     def wypozyczKsiazke(self, tytul1):
         if tytul1 in Ksiazki.ksiazki:
-            Ksiazki.ksiazki.remove(tytul1)
+            obiektKsiazki.ksiazki.remove(tytul1)
             self.ksiazkiWypozyczone.append(tytul1)
 
     def wyswietlWypozyczone(self):
@@ -39,18 +44,22 @@ class Karta:
         windowWyswietlWypozyczone.mainloop()
 
     def usunKsiazki(self):
+        global textUsuwanie
+        def inputTextUsunKsiazke():
+            string = textUsuwanie.get()
+            if string in self.ksiazkiWypozyczone:
+                self.ksiazkiWypozyczone.remove(string)
+            else:
+                sys.exit(0)
         windowUsun = Tk()
         windowUsun.title("Usuń ksiązkę")
         windowUsun.geometry("500x200")
+        textUsuwanie = ttk.Entry(windowUsun)
+        textUsuwanie.pack()
+        textUsuwanie.focus_set()
 
-        textUsun = tk.StringVar()
-        entry = ttk.Entry(windowUsun, textvariable=textUsun)
-        entry.pack(pady=10)
-        def inputText():
-            print("Entered text: ", textUsun.get())
-        guzikInput = ttk.Button(windowUsun, text="Get Text", command=inputText)
-        guzikInput.pack(pady=10)
-        windowUsun.mainloop()
+        guzikUsunKsiazke = ttk.Button(windowUsun, text="Usuń tytuł", command=inputTextUsunKsiazke)
+        guzikUsunKsiazke.pack()
 
     def edytujKsiazki(self, stary_tytul, nowy_tytul):
         self.ksiazkiWypozyczone[self.ksiazkiWypozyczone.index(stary_tytul)] = nowy_tytul
